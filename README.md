@@ -1,3 +1,6 @@
+[![Actions Status](https://github.com/trossbodlera/rails-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/trossbodlera/rails-project-lvl1/actions)
+[![Actions Status](https://github.com/trossbodlera/rails-project-lvl1/actions/workflows/main.yml/badge.svg)](https://github.com/trossbodlera/rails-project-lvl1/actions)
+
 # HexletCode
 
 Simple form generation. Hexlet project
