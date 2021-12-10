@@ -20,9 +20,10 @@ class HexletCodeTest < Minitest::Test
     html = HexletCode.form_for user do |f|
       f.input :name
       f.input :job, as: :text
+      f.submit
     end
 
-    assert(html == "<form action='#' method='post'><input name='name' type='text' value='rob'><textarea cols='20' rows='40' name='job'>hexlet</textarea></form>")
+    assert(html == "<form action='#' method='post'><label for='name'>Name</label><input name='name' type='text' value='rob'><label for='job'>Job</label><textarea cols='20' rows='40' name='job'>hexlet</textarea><input name='commit' type='submit' value='Save'></form>")
   end
 
   def test_form_for_not_attribut
