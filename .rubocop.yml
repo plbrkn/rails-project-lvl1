@@ -11,3 +11,15 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 120
+  Exclude:
+    - "**/test/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - "**/test/**/*"

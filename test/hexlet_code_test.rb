@@ -14,6 +14,30 @@ class HexletCodeTest < Minitest::Test
   end
 
   def test_form_for
-    assert(HexletCode.form_for("/user") == "<form action='/user' method='post'></form>")
+    struct_user = Struct.new(:name, :job, :gender, keyword_init: true)
+    user = struct_user.new name: "rob", job: "hexlet", gender: "m"
+
+    html = HexletCode.form_for user do |f|
+      f.input :name
+      f.input :job, as: :text
+    end
+
+    assert(html == "<form action='#' method='post'><input name='name' type='text' value='rob'><textarea cols='20' rows='40' name='job'>hexlet</textarea></form>")
+  end
+
+  def test_form_for_not_attribut
+    struct_user = Struct.new(:name, :job, :gender, keyword_init: true)
+    user = struct_user.new name: "rob", job: "hexlet", gender: "m"
+
+    exception = assert_raises StandardError do
+      HexletCode.form_for user, url: "/users" do |f|
+        f.input :name
+        f.input :job, as: :text
+        f.input :age
+        f.submit
+      end
+    end
+
+    assert_equal("undefined method `age' for #<struct name=\"rob\", job=\"hexlet\", gender=\"m\">", exception.message)
   end
 end
