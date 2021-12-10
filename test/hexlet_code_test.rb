@@ -23,7 +23,7 @@ class HexletCodeTest < Minitest::Test
       f.submit
     end
 
-    assert(html == "<form action='#' method='post'><label for='name'>Name</label><input name='name' type='text' value='rob'><label for='job'>Job</label><textarea cols='20' rows='40' name='job'>hexlet</textarea><input name='commit' type='submit' value='Save'></form>")
+    assert(html == "<form action='#' method='post'>\n <label for='name'>Name</label>\n <input name='name' type='text' value='rob'>\n <label for='job'>Job</label>\n <textarea cols='20' rows='40' name='job'>hexlet</textarea>\n <input name='commit' type='submit' value='Save'>\n</form>")
   end
 
   def test_form_for_not_attribut

@@ -11,8 +11,8 @@ module HexletCode
     end
 
     def input(name, as: nil)
-      output << Tag.build("label", for: name) { name.capitalize }
-      output << make_input(name, as: as)
+      output << " #{Tag.build("label", for: name) { name.capitalize }}"
+      output << " #{make_input(name, as: as)}"
     end
 
     def textarea(name, value)
@@ -20,7 +20,7 @@ module HexletCode
     end
 
     def submit(value = "Save")
-      output << Tag.build("input", name: "commit", type: "submit", value: value)
+      output << " #{Tag.build("input", name: "commit", type: "submit", value: value)}"
     end
 
     def make_input(name, as: nil)
@@ -34,7 +34,7 @@ module HexletCode
     end
 
     def to_s
-      output.join
+      output.join("\n")
     end
   end
 end
