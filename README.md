@@ -23,7 +23,29 @@ Or install it yourself as:
 
 ## Usage
 
-...
+```ruby
+User = Struct.new(:name, :job, keyword_init: true)
+user = User.new job: 'hexlet'
+
+HexletCode.form_for user do |f|
+  f.input :name
+  f.input :job
+  f.submit
+end
+
+```
+
+will generate
+
+```html
+<form action="#" method="post">
+  <label for="name">Name</label>
+  <input name="name" type="text" />
+  <label for="job">Job</label>
+  <input name="job" type="text" value="hexlet" />
+  <input name="commit" type="submit" value="Save" />
+</form>
+```
 
 ## Development
 
