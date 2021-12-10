@@ -12,4 +12,8 @@ class HexletCodeTest < Minitest::Test
     assert(HexletCode::Tag.build("label", for: "email") { "Email" } == "<label for='email'>Email</label>")
     assert(HexletCode::Tag.build("div") == "<div></div>")
   end
+
+  def test_form_for
+    assert(HexletCode.form_for("/user") == "<form action='/user' method='post'></form>")
+  end
 end
