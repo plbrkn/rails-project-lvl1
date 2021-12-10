@@ -10,26 +10,27 @@ module HexletCode
       @output = []
     end
 
-    def input(name, as: nil)
+    def input(name, options = {})
       output << " #{Tag.build("label", for: name) { name.capitalize }}"
-      output << " #{make_input(name, as: as)}"
+      output << " #{make_input(name, options)}"
     end
 
-    def textarea(name, value)
-      Tag.build("textarea", cols: "20", rows: "40", name: name) { value }
+    def textarea(name, value, cols: 20, rows: 40, **atrrs)
+      Tag.build("textarea", cols: cols, rows: rows, name: name, **atrrs) { value }
     end
 
     def submit(value = "Save")
       output << " #{Tag.build("input", name: "commit", type: "submit", value: value)}"
     end
 
-    def make_input(name, as: nil)
+    def make_input(name, as: nil, cols: 20, rows: 40, **atrrs)
       value = obj.public_send(name)
       case as
       when :text
-        textarea(name, value)
+        textarea(name, value, cols: cols, rows: rows, **atrrs)
+
       else
-        Tag.build("input", name: name, type: "text", value: value)
+        Tag.build("input", name: name, type: "text", value: value, **atrrs)
       end
     end
 
