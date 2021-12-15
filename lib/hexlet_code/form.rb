@@ -28,7 +28,6 @@ module HexletCode
       case as
       when :text
         textarea(name, value, cols: cols, rows: rows, **atrrs)
-
       else
         Tag.build("input", name: name, type: "text", value: value, **atrrs)
       end
