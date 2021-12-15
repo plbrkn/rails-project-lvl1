@@ -14,10 +14,10 @@ module HexletCode
 
     def input(name, options = {})
       output << " #{Tag.build("label", for: name) { name.capitalize }}"
-      output << " #{make_input(name, options)}"
+      output << " #{make_input(name, **options)}"
     end
 
-    def textarea(name, value, cols: 20, rows: 40, **atrrs)
+    def textarea(name, value, cols = 20, rows = 40, **atrrs)
       Tag.build("textarea", cols: cols, rows: rows, name: name, **atrrs) { value }
     end
 
@@ -25,11 +25,11 @@ module HexletCode
       output << " #{Tag.build("input", name: "commit", type: "submit", value: value)}"
     end
 
-    def make_input(name, as: nil, cols: 20, rows: 40, **atrrs)
+    def make_input(name, as: nil, **atrrs)
       value = obj.public_send(name)
       case as
       when :text
-        textarea(name, value, cols: cols, rows: rows, **atrrs)
+        textarea(name, value, **atrrs)
       else
         Tag.build("input", name: name, type: "text", value: value, **atrrs)
       end
