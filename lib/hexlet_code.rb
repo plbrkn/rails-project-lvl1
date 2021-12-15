@@ -3,7 +3,7 @@
 module HexletCode
   autoload :Form, "hexlet_code/form"
   autoload :Tag, "hexlet_code/tag"
-  autoload(:VERSION, "hexlet_code/version")
+  autoload :VERSION, "hexlet_code/version"
 
   class Error < StandardError; end
 
