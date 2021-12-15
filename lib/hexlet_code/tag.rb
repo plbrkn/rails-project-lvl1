@@ -10,7 +10,7 @@ module HexletCode
       if SINGLE_TAGS.include?(tag)
         "<#{tag}#{html_attrs}>"
       else
-        "<#{tag}#{html_attrs}>#{block_given? ? yield : ""}</#{tag}>"
+        "<#{tag}#{html_attrs}>#{block_given? ? yield : ''}</#{tag}>"
       end
     end
   end
