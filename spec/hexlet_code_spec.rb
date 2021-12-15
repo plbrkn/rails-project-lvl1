@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe HexletCode do
   describe 'My test' do
     let(:struct) { Struct.new(:name, :job, :gender, keyword_init: true) }
@@ -99,3 +100,4 @@ RSpec.describe HexletCode do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

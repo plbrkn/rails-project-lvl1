@@ -1,18 +1,5 @@
 AllCops:
   TargetRubyVersion: 3.0
 
-Layout/LineLength:
-  Max: 120
-  Exclude:
-    - "**/spec/**/*"
-
 Style/Documentation:
   Enabled: false
-
-Metrics/MethodLength:
-  Exclude:
-    - "**/spec/**/*"
-
-Metrics/BlockLength:
-  Exclude:
-    - "**/spec/**/*"
