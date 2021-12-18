@@ -8,14 +8,6 @@ RSpec.describe HexletCode do
     let(:struct) { Struct.new(:name, :job, :gender, keyword_init: true) }
     let(:user) { struct.new(name: 'rob', job: 'hexlet', gender: 'm') }
 
-    it 'tag' do
-      expect(HexletCode::Tag.build('br')).to have_tag('br')
-      expect(HexletCode::Tag.build('img', src: 'path/to/image')).to have_tag('img')
-      expect(HexletCode::Tag.build('input', type: 'submit', value: 'Save')).to have_tag('input')
-      expect(HexletCode::Tag.build('label')).to have_tag('label')
-      expect(HexletCode::Tag.build('div')).to have_tag('div')
-    end
-
     it 'form_for' do
       html = HexletCode.form_for user do |f|
         f.input :name
