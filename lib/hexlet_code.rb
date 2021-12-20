@@ -10,6 +10,6 @@ module HexletCode
   def self.form_for(obj, url: '#')
     form = Form.new(obj)
     yield form
-    Tag.build('form', action: url, method: 'post') { "\n#{form}\n" }
+    Tag.build('form', action: url, method: 'post') { form }
   end
 end

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-module HexletCode
-  autoload :Tag, 'hexlet_code/tag'
+require_relative 'inputs/base_input'
+require_relative 'inputs/input'
+require_relative 'inputs/text'
 
+module HexletCode
   # Form builder
   class Form
     attr_reader :obj, :output
@@ -13,27 +15,18 @@ module HexletCode
     end
 
     def input(name, options = {})
-      output << " #{Tag.build('label', for: name) { name.capitalize }}"
-      output << " #{make_input(name, **options)}"
-    end
-
-    def textarea(name, value, cols = 20, rows = 40, **atrrs)
-      Tag.build('textarea', cols: cols, rows: rows, name: name, **atrrs) { value }
+      output << make_input(name, **options)
     end
 
     def submit(value = 'Save')
-      output << " #{Tag.build('input', name: 'commit', type: 'submit', value: value)}"
+      output << Tag.build('input', name: 'commit', type: 'submit', value: value)
     end
 
     # rubocop:disable Naming/MethodParameterName
-    def make_input(name, as: nil, **atrrs)
+    def make_input(name, as: 'input', **atrrs)
       value = obj.public_send(name)
-      case as
-      when :text
-        textarea(name, value, **atrrs)
-      else
-        Tag.build('input', name: name, type: 'text', value: value, **atrrs)
-      end
+
+      Object.const_get("HexletCode::Inputs::#{as.to_s.capitalize}").new(value, name, **atrrs).build
     end
     # rubocop:enable Naming/MethodParameterName
 
